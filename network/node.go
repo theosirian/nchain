@@ -69,9 +69,9 @@ type Node struct {
 	provide.Model
 	C2NodeID       uuid.UUID  `sql:"not null;type:uuid" json:"c2_node_id"`
 	NetworkID      uuid.UUID  `sql:"not null;type:uuid" json:"network_id"`
-	UserID         *uuid.UUID `sql:"type:uuid" json:"user_id"`
+	UserID         *string    `sql:"-" json:"user_id"`
 	ApplicationID  *uuid.UUID `sql:"type:uuid" json:"application_id"`
-	OrganizationID *uuid.UUID `sql:"type:uuid" json:"organization_id"`
+	OrganizationID *string    `sql:"-" json:"organization_id"`
 	Bootnode       bool       `sql:"not null;default:'false'" json:"-"`
 	Role           *string    `sql:"not null;default:'peer'" json:"role"`
 

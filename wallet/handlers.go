@@ -38,8 +38,8 @@ func InstallWalletsAPI(r *gin.Engine) {
 
 func createAccountHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
-	organizationID := util.AuthorizedSubjectID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
+	organizationID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && userID == nil && organizationID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -123,8 +123,8 @@ func accountsListHandler(c *gin.Context) {
 
 func accountDetailsHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
-	organizationID := util.AuthorizedSubjectID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
+	organizationID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && userID == nil && organizationID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -169,8 +169,8 @@ func accountDetailsHandler(c *gin.Context) {
 
 func accountBalanceHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
-	organizationID := util.AuthorizedSubjectID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
+	organizationID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && userID == nil && organizationID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -204,8 +204,8 @@ func accountBalanceHandler(c *gin.Context) {
 
 func createWalletHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
-	organizationID := util.AuthorizedSubjectID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
+	organizationID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && userID == nil && organizationID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -278,8 +278,8 @@ func walletsListHandler(c *gin.Context) {
 
 func walletDetailsHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
-	organizationID := util.AuthorizedSubjectID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
+	organizationID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -308,8 +308,8 @@ func walletDetailsHandler(c *gin.Context) {
 
 func walletAccountsListHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
-	organizationID := util.AuthorizedSubjectID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
+	organizationID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && userID == nil && organizationID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return

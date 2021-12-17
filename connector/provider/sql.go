@@ -25,14 +25,14 @@ type SQLProvider struct {
 	config         map[string]interface{}
 	networkID      *uuid.UUID
 	applicationID  *uuid.UUID
-	organizationID *uuid.UUID
 	region         *string
+	organizationID *string
 	apiURL         *string
 	apiPort        int
 }
 
 // InitSQLProvider initializes and returns the SQL connector API provider
-func InitSQLProvider(connectorID uuid.UUID, networkID, applicationID, organizationID *uuid.UUID, model *gorm.DB, config map[string]interface{}) *SQLProvider {
+func InitSQLProvider(connectorID uuid.UUID, networkID, applicationID *uuid.UUID, organizationID *string, model *gorm.DB, config map[string]interface{}) *SQLProvider {
 	region, regionOk := config["region"].(string)
 	apiURL, _ := config["api_url"].(string)
 	apiPort, apiPortOk := config["api_port"].(float64)

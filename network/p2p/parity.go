@@ -207,7 +207,7 @@ func (p *ParityP2PProvider) ResolveTokenContract(signerAddress string, receipt i
 }
 
 // RequireBootnodes attempts to resolve the peers to use as bootnodes
-func (p *ParityP2PProvider) RequireBootnodes(db *gorm.DB, userID *uuid.UUID, networkID *uuid.UUID, n common.Configurable) error {
+func (p *ParityP2PProvider) RequireBootnodes(db *gorm.DB, userID *string, networkID *uuid.UUID, n common.Configurable) error {
 	var err error
 
 	cfg := p.network.ParseConfig()
@@ -226,7 +226,7 @@ func (p *ParityP2PProvider) RequireBootnodes(db *gorm.DB, userID *uuid.UUID, net
 			addr = common.StringOrNil(masterOfCeremony)
 			out := []string{}
 			// FIXME!!!!!!
-			db.Table("accounts").Select("private_key").Where("accounts.user_id = ? AND accounts.address = ?", userID.String(), addr).Pluck("private_key", &out)
+			db.Table("accounts").Select("private_key").Where("accounts.user_id = ? AND accounts.address = ?", *userID, addr).Pluck("private_key", &out)
 			if out == nil || len(out) == 0 || len(out[0]) == 0 {
 				common.Log.Warningf("Failed to retrieve manage engine signing identity for network: %s; generating unmanaged identity...", networkID)
 				addr, privateKey, err = providecrypto.EVMGenerateKeyPair()

@@ -31,8 +31,8 @@ func InstallContractsAPI(r *gin.Engine) {
 // so the nchain user can interact with it without deploying it
 func createPublicContractHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
-	orgID := util.AuthorizedSubjectID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
+	orgID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && userID == nil && orgID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -137,8 +137,8 @@ func contractsListHandler(c *gin.Context) {
 
 func contractDetailsHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
-	orgID := util.AuthorizedSubjectID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
+	orgID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && userID == nil && orgID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -191,7 +191,7 @@ func contractDetailsHandler(c *gin.Context) {
 
 func createContractHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	orgID := util.AuthorizedSubjectID(c, "organization")
+	orgID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && orgID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -246,8 +246,8 @@ func createContractHandler(c *gin.Context) {
 
 func createContractSubscriptionTokenHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
-	orgID := util.AuthorizedSubjectID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
+	orgID := util.AuthorizedSubjectDID(c, "organization")
 	if appID == nil && userID == nil && orgID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -308,9 +308,9 @@ func createContractSubscriptionTokenHandler(c *gin.Context) {
 	if appID != nil {
 		subject = fmt.Sprintf("application:%s", appID.String())
 	} else if orgID != nil {
-		subject = fmt.Sprintf("organization:%s", orgID.String())
+		subject = fmt.Sprintf("organization:%s", *orgID)
 	} else if userID != nil {
-		subject = fmt.Sprintf("user:%s", userID.String())
+		subject = fmt.Sprintf("user:%s", *userID)
 	}
 
 	allowedSubject := *contract.PubsubPrefix

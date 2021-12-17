@@ -75,7 +75,7 @@ func createTokenHandler(c *gin.Context) {
 }
 
 func networkTokensListHandler(c *gin.Context) {
-	userID := util.AuthorizedSubjectID(c, "user")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	if userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return

@@ -26,14 +26,14 @@ type MongoDBProvider struct {
 	config         map[string]interface{}
 	networkID      *uuid.UUID
 	applicationID  *uuid.UUID
-	organizationID *uuid.UUID
 	region         *string
+	organizationID *string
 	apiURL         *string
 	apiPort        int
 }
 
 // InitMongoDBProvider initializes and returns the MongoDB connector API provider
-func InitMongoDBProvider(connectorID uuid.UUID, networkID, applicationID, organizationID *uuid.UUID, model *gorm.DB, config map[string]interface{}) *MongoDBProvider {
+func InitMongoDBProvider(connectorID uuid.UUID, networkID, applicationID *uuid.UUID, organizationID *string, model *gorm.DB, config map[string]interface{}) *MongoDBProvider {
 	region, regionOk := config["region"].(string)
 	apiURL, _ := config["api_url"].(string)
 	apiPort, apiPortOk := config["api_port"].(float64)

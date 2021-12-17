@@ -74,7 +74,7 @@ type API interface {
 	FetchTxReceipt(signerAddress, hash string) (*provide.TxReceipt, error)
 	FetchTxTraces(hash string) (*provide.TxTrace, error)
 	FormatBootnodes([]string) string
-	RequireBootnodes(db *gorm.DB, userID *uuid.UUID, networkID *uuid.UUID, n common.Configurable) error
+	RequireBootnodes(db *gorm.DB, userID *string, networkID *uuid.UUID, n common.Configurable) error
 	ResolvePeerURL() (*string, error)
 	ResolveTokenContract(string, interface{}, *provide.CompiledArtifact) (*string, *string, *big.Int, *string, error) // name, decimals, symbol, error
 	Upgrade() error

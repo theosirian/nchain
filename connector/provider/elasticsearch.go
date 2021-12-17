@@ -22,7 +22,7 @@ type ElasticsearchProvider struct {
 	config         map[string]interface{}
 	networkID      *uuid.UUID
 	applicationID  *uuid.UUID
-	organizationID *uuid.UUID
+	organizationID *string
 	region         *string
 	apiURL         *string
 	apiPort        int
@@ -30,7 +30,7 @@ type ElasticsearchProvider struct {
 }
 
 // InitElasticsearchProvider initializes and returns the Elasticsearch connector API provider
-func InitElasticsearchProvider(connectorID uuid.UUID, networkID, applicationID, organizationID *uuid.UUID, model *gorm.DB, config map[string]interface{}) *ElasticsearchProvider {
+func InitElasticsearchProvider(connectorID uuid.UUID, networkID, applicationID *uuid.UUID, organizationID *string, model *gorm.DB, config map[string]interface{}) *ElasticsearchProvider {
 	region, regionOk := config["region"].(string)
 	apiURL, _ := config["api_url"].(string)
 	apiPort, apiPortOk := config["api_port"].(float64)

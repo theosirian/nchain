@@ -211,7 +211,7 @@ func (p *QuorumP2PProvider) ResolveTokenContract(signerAddress string, receipt i
 }
 
 // RequireBootnodes attempts to resolve the peers to use as bootnodes
-func (p *QuorumP2PProvider) RequireBootnodes(db *gorm.DB, userID *uuid.UUID, networkID *uuid.UUID, n common.Configurable) error {
+func (p *QuorumP2PProvider) RequireBootnodes(db *gorm.DB, userID *string, networkID *uuid.UUID, n common.Configurable) error {
 	var err error
 	common.Log.Debugf("quorum p2p provider RequireBootnodes() no-op")
 	return err

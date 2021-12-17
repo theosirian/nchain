@@ -24,14 +24,14 @@ type ZokratesProvider struct {
 	config         map[string]interface{}
 	networkID      *uuid.UUID
 	applicationID  *uuid.UUID
-	organizationID *uuid.UUID
+	organizationID *string
 	region         *string
 	apiURL         *string
 	apiPort        int
 }
 
 // InitZokratesProvider initializes and returns the Zokrates connector API provider
-func InitZokratesProvider(connectorID uuid.UUID, networkID, applicationID, organizationID *uuid.UUID, model *gorm.DB, config map[string]interface{}) *ZokratesProvider {
+func InitZokratesProvider(connectorID uuid.UUID, networkID, applicationID *uuid.UUID, organizationID *string, model *gorm.DB, config map[string]interface{}) *ZokratesProvider {
 	region, regionOk := config["region"].(string)
 	apiURL, _ := config["api_url"].(string)
 	apiPort, apiPortOk := config["api_port"].(float64)

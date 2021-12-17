@@ -205,7 +205,7 @@ func (p *GethP2PProvider) ResolveTokenContract(signerAddress string, receipt int
 }
 
 // RequireBootnodes attempts to resolve the peers to use as bootnodes
-func (p *GethP2PProvider) RequireBootnodes(db *gorm.DB, userID *uuid.UUID, networkID *uuid.UUID, n common.Configurable) error {
+func (p *GethP2PProvider) RequireBootnodes(db *gorm.DB, userID *string, networkID *uuid.UUID, n common.Configurable) error {
 	var err error
 	common.Log.Debugf("geth p2p provider RequireBootnodes() no-op")
 	return err

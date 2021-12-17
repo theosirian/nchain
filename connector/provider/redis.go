@@ -22,14 +22,14 @@ type RedisProvider struct {
 	config         map[string]interface{}
 	networkID      *uuid.UUID
 	applicationID  *uuid.UUID
-	organizationID *uuid.UUID
+	organizationID *string
 	region         *string
 	apiURL         *string
 	apiPort        int
 }
 
 // InitRedisProvider initializes and returns the Redis connector API provider
-func InitRedisProvider(connectorID uuid.UUID, networkID, applicationID, organizationID *uuid.UUID, model *gorm.DB, config map[string]interface{}) *RedisProvider {
+func InitRedisProvider(connectorID uuid.UUID, networkID, applicationID *uuid.UUID, organizationID *string, model *gorm.DB, config map[string]interface{}) *RedisProvider {
 	region, regionOk := config["region"].(string)
 	apiURL, _ := config["api_url"].(string)
 	apiPort, apiPortOk := config["api_port"].(float64)

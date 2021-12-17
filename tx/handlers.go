@@ -32,8 +32,8 @@ func InstallTransactionsAPI(r *gin.Engine) {
 
 func transactionsListHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	orgID := util.AuthorizedSubjectID(c, "organization")
-	userID := util.AuthorizedSubjectID(c, "user")
+	orgID := util.AuthorizedSubjectDID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	if appID == nil && orgID == nil && userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -92,8 +92,8 @@ func transactionsListHandler(c *gin.Context) {
 
 func createTransactionHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	orgID := util.AuthorizedSubjectID(c, "organization")
-	userID := util.AuthorizedSubjectID(c, "user")
+	orgID := util.AuthorizedSubjectDID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	if appID == nil && orgID == nil && userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -129,8 +129,8 @@ func createTransactionHandler(c *gin.Context) {
 
 func transactionDetailsHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	orgID := util.AuthorizedSubjectID(c, "organization")
-	userID := util.AuthorizedSubjectID(c, "user")
+	orgID := util.AuthorizedSubjectDID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	if appID == nil && orgID == nil && userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -166,7 +166,7 @@ func transactionDetailsHandler(c *gin.Context) {
 }
 
 func networkTransactionsListHandler(c *gin.Context) {
-	userID := util.AuthorizedSubjectID(c, "user")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	if userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -190,7 +190,7 @@ func networkTransactionsListHandler(c *gin.Context) {
 }
 
 func networkTransactionDetailsHandler(c *gin.Context) {
-	userID := util.AuthorizedSubjectID(c, "user")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	if userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -347,8 +347,8 @@ func networkTransactionDetailsHandler(c *gin.Context) {
 
 func contractExecutionHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	orgID := util.AuthorizedSubjectID(c, "organization")
-	userID := util.AuthorizedSubjectID(c, "user")
+	orgID := util.AuthorizedSubjectDID(c, "organization")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	if appID == nil && orgID == nil && userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return

@@ -92,7 +92,7 @@ func (p *BaseledgerP2PProvider) ResolveTokenContract(signerAddress string, recei
 }
 
 // RequireBootnodes attempts to resolve the peers to use as bootnodes
-func (p *BaseledgerP2PProvider) RequireBootnodes(db *gorm.DB, userID *uuid.UUID, networkID *uuid.UUID, n common.Configurable) error {
+func (p *BaseledgerP2PProvider) RequireBootnodes(db *gorm.DB, userID *string, networkID *uuid.UUID, n common.Configurable) error {
 	return errors.New("not yet implemented")
 }
 

@@ -30,7 +30,7 @@ const natsTxCreateSubject = "nchain.tx.create"
 type Contract struct {
 	provide.Model
 	ApplicationID  *uuid.UUID       `sql:"type:uuid" json:"application_id"`
-	OrganizationID *uuid.UUID       `sql:"type:uuid" json:"organization_id"`
+	OrganizationID *string          `sql:"-" json:"organization_id"`
 	NetworkID      uuid.UUID        `sql:"not null;type:uuid" json:"network_id"`
 	ContractID     *uuid.UUID       `sql:"type:uuid" json:"contract_id"`    // id of the contract which created the contract (or null)
 	TransactionID  *uuid.UUID       `sql:"type:uuid" json:"transaction_id"` // id of the transaction which deployed the contract (or null)
@@ -379,7 +379,7 @@ func (c *Contract) pubsubSubjectPrefix() *string {
 		return common.StringOrNil(hex.EncodeToString(digest.Sum(nil)))
 	} else if c.OrganizationID != nil {
 		digest := sha256.New()
-		digest.Write([]byte(fmt.Sprintf("%s.%s", c.OrganizationID.String(), *c.Address)))
+		digest.Write([]byte(fmt.Sprintf("%s.%s", *c.OrganizationID, *c.Address)))
 		return common.StringOrNil(hex.EncodeToString(digest.Sum(nil)))
 	}
 

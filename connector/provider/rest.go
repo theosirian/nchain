@@ -22,14 +22,14 @@ type RESTProvider struct {
 	config         map[string]interface{}
 	networkID      *uuid.UUID
 	applicationID  *uuid.UUID
-	organizationID *uuid.UUID
+	organizationID *string
 	region         *string
 	apiURL         *string
 	apiPort        int
 }
 
 // InitRESTProvider initializes and returns the REST connector API provider
-func InitRESTProvider(connectorID uuid.UUID, networkID, applicationID, organizationID *uuid.UUID, model *gorm.DB, config map[string]interface{}) *RESTProvider {
+func InitRESTProvider(connectorID uuid.UUID, networkID, applicationID *uuid.UUID, organizationID *string, model *gorm.DB, config map[string]interface{}) *RESTProvider {
 	region, regionOk := config["region"].(string)
 	apiURL, _ := config["api_url"].(string)
 	apiPort, apiPortOk := config["api_port"].(float64)

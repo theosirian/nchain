@@ -49,8 +49,8 @@ type Transaction struct {
 
 	// Application, organization or user id, if populated, is the entity for which the transaction was custodially signed and broadcast
 	ApplicationID  *uuid.UUID `sql:"type:uuid" json:"application_id,omitempty"`
-	OrganizationID *uuid.UUID `sql:"type:uuid" json:"organization_id,omitempty"`
-	UserID         *uuid.UUID `sql:"type:uuid" json:"user_id,omitempty"`
+	OrganizationID *string    `sql:"-" json:"organization_id,omitempty"`
+	UserID         *string    `sql:"-" json:"user_id,omitempty"`
 
 	// Account or HD wallet which custodially signed the transaction; when an HD wallet is used, if no HD derivation path is provided,
 	// the most recently derived non-zero account is used to sign

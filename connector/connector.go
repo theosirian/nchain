@@ -25,7 +25,7 @@ type Connector struct {
 	provide.Model
 	ApplicationID   *uuid.UUID       `sql:"type:uuid" json:"application_id"`
 	NetworkID       uuid.UUID        `sql:"not null;type:uuid" json:"network_id"`
-	OrganizationID  *uuid.UUID       `sql:"type:uuid" json:"organization_id"`
+	OrganizationID  *string          `sql:"-" json:"organization_id"`
 	Name            *string          `sql:"not null" json:"name"`
 	Type            *string          `sql:"not null" json:"type"`
 	Status          *string          `sql:"not null;default:'init'" json:"status"`

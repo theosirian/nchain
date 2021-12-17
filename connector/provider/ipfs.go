@@ -26,14 +26,14 @@ type IPFSProvider struct {
 	config         map[string]interface{}
 	networkID      *uuid.UUID
 	applicationID  *uuid.UUID
-	organizationID *uuid.UUID
+	organizationID *string
 	region         *string
 	apiURL         *string
 	apiPort        int
 }
 
 // InitIPFSProvider initializes and returns the IPFS connector API provider
-func InitIPFSProvider(connectorID uuid.UUID, networkID, applicationID, organizationID *uuid.UUID, model *gorm.DB, config map[string]interface{}) *IPFSProvider {
+func InitIPFSProvider(connectorID uuid.UUID, networkID, applicationID *uuid.UUID, organizationID *string, model *gorm.DB, config map[string]interface{}) *IPFSProvider {
 	region, regionOk := config["region"].(string)
 	apiURL, _ := config["api_url"].(string)
 	apiPort, apiPortOk := config["api_port"].(float64)

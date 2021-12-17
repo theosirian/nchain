@@ -24,8 +24,8 @@ type Wallet struct {
 	provide.Model
 	WalletID       *uuid.UUID `sql:"-" json:"wallet_id,omitempty"`
 	ApplicationID  *uuid.UUID `sql:"type:uuid" json:"application_id,omitempty"`
-	UserID         *uuid.UUID `sql:"type:uuid" json:"user_id,omitempty"`
-	OrganizationID *uuid.UUID `sql:"type:uuid" json:"organization_id,omitempty"`
+	UserID         *string    `sql:"-" json:"user_id,omitempty"`
+	OrganizationID *string    `sql:"-" json:"organization_id,omitempty"`
 
 	VaultID *uuid.UUID `sql:"type:uuid" json:"vault_id,omitempty"`
 	KeyID   *uuid.UUID `sql:"type:uuid" json:"key_id,omitempty"`

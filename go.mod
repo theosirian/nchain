@@ -55,3 +55,7 @@ require (
 	go.mongodb.org/mongo-driver v1.3.3
 	launchpad.net/gocheck v0.0.0-20140225173054-000000000087 // indirect
 )
+
+replace github.com/provideplatform/ident => ../ident
+
+replace github.com/provideplatform/provide-go => ../provide-go

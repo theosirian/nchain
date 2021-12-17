@@ -72,7 +72,7 @@ func (err *bootnodesInitialized) Error() string {
 type Network struct {
 	provide.Model
 	ApplicationID   *uuid.UUID       `sql:"type:uuid" json:"application_id,omitempty"`
-	UserID          *uuid.UUID       `sql:"type:uuid" json:"user_id,omitempty"`
+	UserID          *string          `sql:"-" json:"user_id,omitempty"`
 	Name            *string          `sql:"not null" json:"name"`
 	Description     *string          `json:"description"`
 	IsProduction    *bool            `sql:"not null" json:"-"` // deprecated

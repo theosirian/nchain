@@ -99,7 +99,7 @@ func (p *HyperledgerFabricP2PProvider) ResolveTokenContract(signerAddress string
 }
 
 // RequireBootnodes attempts to resolve the peers to use as bootnodes
-func (p *HyperledgerFabricP2PProvider) RequireBootnodes(db *gorm.DB, userID *uuid.UUID, networkID *uuid.UUID, n common.Configurable) error {
+func (p *HyperledgerFabricP2PProvider) RequireBootnodes(db *gorm.DB, userID *string, networkID *uuid.UUID, n common.Configurable) error {
 	var err error
 	common.Log.Debugf("fabric p2p provider RequireBootnodes() no-op")
 	return err

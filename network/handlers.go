@@ -42,7 +42,7 @@ func InstallNetworksAPI(r *gin.Engine) {
 
 func createNetworkHandler(c *gin.Context) {
 	appID := util.AuthorizedSubjectID(c, "application")
-	userID := util.AuthorizedSubjectID(c, "user")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	if appID == nil && userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -73,7 +73,7 @@ func createNetworkHandler(c *gin.Context) {
 }
 
 func updateNetworkHandler(c *gin.Context) {
-	userID := util.AuthorizedSubjectID(c, "user")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	if userID == nil {
 		provide.RenderError("unauthorized", 401, c)
 		return
@@ -236,7 +236,7 @@ func nodesListHandler(c *gin.Context) {
 }
 
 func nodeDetailsHandler(c *gin.Context) {
-	userID := util.AuthorizedSubjectID(c, "user")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	appID := util.AuthorizedSubjectID(c, "application")
 	if userID == nil && appID == nil {
 		provide.RenderError("unauthorized", 401, c)
@@ -260,7 +260,7 @@ func nodeDetailsHandler(c *gin.Context) {
 }
 
 func nodeLogsHandler(c *gin.Context) {
-	userID := util.AuthorizedSubjectID(c, "user")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	appID := util.AuthorizedSubjectID(c, "application")
 	if userID == nil && appID == nil {
 		provide.RenderError("unauthorized", 401, c)
@@ -294,7 +294,7 @@ func nodeLogsHandler(c *gin.Context) {
 }
 
 func createNodeHandler(c *gin.Context) {
-	userID := util.AuthorizedSubjectID(c, "user")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	appID := util.AuthorizedSubjectID(c, "application")
 	if userID == nil && appID == nil {
 		provide.RenderError("unauthorized", 401, c)
@@ -360,7 +360,7 @@ func createNodeHandler(c *gin.Context) {
 }
 
 func deleteNodeHandler(c *gin.Context) {
-	userID := util.AuthorizedSubjectID(c, "user")
+	userID := util.AuthorizedSubjectDID(c, "user")
 	appID := util.AuthorizedSubjectID(c, "application")
 	if userID == nil && appID == nil {
 		provide.RenderError("unauthorized", 401, c)

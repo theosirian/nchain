@@ -131,7 +131,7 @@ func (p *NethermindP2PProvider) ResolveTokenContract(signerAddress string, recei
 }
 
 // RequireBootnodes attempts to resolve the peers to use as bootnodes
-func (p *NethermindP2PProvider) RequireBootnodes(db *gorm.DB, userID *uuid.UUID, networkID *uuid.UUID, n common.Configurable) error {
+func (p *NethermindP2PProvider) RequireBootnodes(db *gorm.DB, userID *string, networkID *uuid.UUID, n common.Configurable) error {
 	var err error
 	common.Log.Debugf("nethermind p2p provider RequireBootnodes() no-op")
 	return err
